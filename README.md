@@ -1,6 +1,6 @@
-# 🔧 Canvas Token Optimizer: LLM Prompt Engineering & Visualization
+# 🔧 Token Canvas Optimizer: LLM Prompt Engineering & Visualization
 
-Canvas Token Optimizer is a specialized web utility for AI Red Teamers and Prompt Engineers. It empowers you to craft, refine, and visualize text for Large Language Model (LLM) inputs, focusing on maximizing token efficiency and generating compact image representations of your prompts.
+Token Canvas Optimizer is a specialized web utility for AI Red Teamers and Prompt Engineers. It empowers you to craft, refine, and visualize text for Large Language Model (LLM) inputs, focusing on maximizing token efficiency and generating compact image representations of your prompts.
 
 ## ✨ Key Features
 
@@ -18,8 +18,8 @@ Canvas Token Optimizer is a specialized web utility for AI Red Teamers and Promp
 -   **Character Count**: Essential for monitoring prompt length against token limits.
 -   **Word & Line Count**: Additional metrics for text assessment.
 
-### 🖼️ **Direct Image Generation (Coming Soon in Beta)**
--   The ability to directly download the optimized text view as a PNG or JPEG image, eliminating manual screenshotting.
+### 🖼️ **Direct Image Generation (Beta)**
+-   Directly download the optimized text view as a PNG image, eliminating manual screenshotting.
 
 ### 🎨 **Streamlined UI**
 -   Modern dark theme for comfortable extended use.
@@ -27,7 +27,7 @@ Canvas Token Optimizer is a specialized web utility for AI Red Teamers and Promp
 
 ## 🚀 Live Demo
 _(Placeholder: Update this link once deployed to your GitHub Pages)_
-Visit the live demo: [Canvas Token Optimizer](https://your-username.github.io/your-repo-name)
+Visit the live demo: [Token Canvas Optimizer](https://your-username.github.io/your-repo-name)
 
 ## 🛠️ How to Use for Optimal Prompt Engineering
 
@@ -37,7 +37,7 @@ Visit the live demo: [Canvas Token Optimizer](https://your-username.github.io/yo
     *   Minimize "Font Size" and "Line Height" for the highest text density.
     *   Adjust "Columns" or "Zoom" as needed.
 4.  **Analyze Stats**: Keep an eye on "Character Count" to stay within token budgets.
-5.  **Generate Image (Beta Feature)**: Use the upcoming "Download Image" feature to get a clean image of your optimized prompt. (Currently: take a manual screenshot).
+5.  **Generate Image**: Use the "Download Image" feature to get a clean image of your optimized prompt.
 
 ## 💡 Use Cases for AI Red Teaming & LLM Development
 
@@ -50,12 +50,12 @@ Visit the live demo: [Canvas Token Optimizer](https://your-username.github.io/yo
 ## 🔧 Technical Stack
 -   HTML5, CSS3 (Flexbox, Grid)
 -   Vanilla JavaScript (ES6+)
--   (Planned for image generation: `html2canvas` or similar library)
+-   `html2canvas` library for image generation.
 
 ## 🌟 Planned Enhancements & Roadmap
 
--   [X] **Direct Image Download**: Core feature for next release (Beta branch).
--   [ ] Customizable image output settings (format, quality).
+-   [X] **Direct Image Download**: Implemented!
+-   [ ] Customizable image output settings (format, quality, background color).
 -   [ ] Export to PDF/Text.
 -   [ ] Save/Load prompt sessions locally.
 -   [ ] Advanced token counting (e.g., BPE approximation).

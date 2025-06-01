@@ -50,6 +50,7 @@ class TextFittingTool {
         document.getElementById('fitText').addEventListener('click', () => this.autoFit());
         document.getElementById('resetView').addEventListener('click', () => this.resetView());
         document.getElementById('nativeFullScreenBtn').addEventListener('click', () => this.toggleNativeFullscreen());
+        document.getElementById('downloadImageBtn').addEventListener('click', () => this.downloadAsImage());
     }
     
     toggleNativeFullscreen() {
@@ -261,6 +262,76 @@ class TextFittingTool {
         document.getElementById('wordCount').textContent = words.toLocaleString();
         document.getElementById('lineCount').textContent = lines.toLocaleString();
         document.getElementById('readingTime').textContent = readingTime + ' min';
+    }
+
+    downloadAsImage() {
+        const targetElement = this.displayArea.firstChild;
+
+        if (!targetElement) {
+            alert('No content to capture. Please type some text.');
+            return;
+        }
+
+        // Store original styles
+        const originalStyles = {
+            display: targetElement.style.display,
+            width: targetElement.style.width,
+            height: targetElement.style.height,
+            overflow: targetElement.style.overflow,
+            backgroundColor: targetElement.style.backgroundColor,
+            padding: targetElement.style.padding,
+            transform: targetElement.style.transform, // Store original transform
+            transformOrigin: targetElement.style.transformOrigin // Store original transform-origin
+        };
+
+        // Temporarily change styles for tight capture
+        targetElement.style.transform = 'none'; // Remove transform for measurement
+        targetElement.style.transformOrigin = 'initial'; // Reset transform-origin
+        targetElement.style.display = 'inline-block';
+        targetElement.style.width = 'auto';
+        targetElement.style.height = 'auto';
+        targetElement.style.padding = '0px';
+        targetElement.style.overflow = 'visible';
+        targetElement.style.backgroundColor = originalStyles.backgroundColor || '#191928';
+
+        // Force browser to recalculate styles
+        void targetElement.offsetHeight; // Triggers reflow
+
+        const unscaledWidth = targetElement.offsetWidth;
+        const unscaledHeight = targetElement.offsetHeight;
+        const canvasBackgroundColor = '#191928';
+        const currentZoomFactor = this.zoomLevel / 100;
+
+        html2canvas(targetElement, {
+            useCORS: true,
+            backgroundColor: canvasBackgroundColor,
+            scale: currentZoomFactor, // Apply scaling via html2canvas
+            width: unscaledWidth,    // Use unscaled width for canvas base
+            height: unscaledHeight,  // Use unscaled height for canvas base
+            windowWidth: unscaledWidth,
+            windowHeight: unscaledHeight
+        }).then(canvas => {
+            const image = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'token-canvas-optimizer-output.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).catch(err => {
+            console.error('Error generating image:', err);
+            alert('Error generating image. See console for details.');
+        }).finally(() => {
+            // Restore original styles regardless of success or failure
+            targetElement.style.display = originalStyles.display;
+            targetElement.style.width = originalStyles.width;
+            targetElement.style.height = originalStyles.height;
+            targetElement.style.overflow = originalStyles.overflow;
+            targetElement.style.backgroundColor = originalStyles.backgroundColor;
+            targetElement.style.padding = originalStyles.padding;
+            targetElement.style.transform = originalStyles.transform; // Restore transform
+            targetElement.style.transformOrigin = originalStyles.transformOrigin; // Restore transform-origin
+        });
     }
 }
 
