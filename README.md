@@ -26,8 +26,7 @@ Canvas Token Optimizer is a specialized web utility for AI Red Teamers and Promp
 -   Responsive design for accessibility across devices.
 
 ## 🚀 Live Demo
-_(Placeholder: Update this link once deployed to your GitHub Pages)_
-Visit the live demo: [Canvas Token Optimizer](https://your-username.github.io/your-repo-name)
+Visit the live demo: [Canvas Token Optimizer](https://karthidreamr.github.io/Canvas-Token-Optimizer)
 
 ## 🛠️ How to Use for Optimal Prompt Engineering
 
